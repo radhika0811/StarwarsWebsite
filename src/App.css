@@ -1,0 +1,193 @@
+.App {
+  text-align: center;
+}
+
+body{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.form{
+  border : 3px solid #f1f1f1;
+}
+
+input[type=text], input[type=password] {
+  width: 70%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.login-btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 70%;
+}
+#login{
+  color: black;
+}
+label{
+  padding: 200px;
+}
+
+.login-btn:hover {
+  opacity: 0.8;
+}
+
+ nav{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background-color: #282c34;
+  color: white;
+} 
+.nav-1{
+  color : white;
+  text-transform: capitalize;
+  padding-right: 750px;
+}
+.user{
+  display: inline-flex;
+  float: left;
+}
+
+.link-2{
+  color: white;
+  text-decoration: none;
+}
+.link-1{
+  padding-left:120px;
+  color: white;
+  padding:25px;
+  text-decoration: none;
+  font-size: 24px;
+}
+.btn-logout{
+  background-color: thistle;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+}
+
+img{
+  height: 350px;
+  width: 350px;
+  border-radius: 50%;
+}
+.home-page{
+  background: url("./assets/images/background-homepage.jpg") no-repeat center center/cover;
+}
+.main-box{
+  display: flex;
+    justify-content: center;
+}
+.box{
+   border: 2px solid;
+    margin: 10px;
+    width: 275px;
+    padding: 10px;
+    background-color: lightblue;
+    color: white;
+    text-align: center;
+}
+.links{
+    text-decoration: none;
+    color: black;
+}
+.home{
+  font-size: 50px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: black;
+}
+h1{
+  color: teal;   
+  font-size: 50px;
+}
+.btn-more{
+   background-color: black;
+   color: white;
+   border-radius: 25%;
+  padding: 14px 20px;
+  margin: 8px 0;       
+  border: 3px white;
+  cursor: pointer;
+}
+.btn-more:hover{
+  background-color: white;
+  color: black;
+}
+.search{
+  color: turquoise;
+  font-size: 60px;
+}
+.search-box{
+  width: 70%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.search-results{
+  font-size: 20px;
+  color: black;
+  background : url("./assets/images/background-2.jpg") no-repeat center center/cover;
+}
+h4{
+  text-decoration: none;
+}
+.btn-search{
+  background-color: lightgray;
+  color: black;
+  font-size: 20px;
+  padding: 5px;
+  margin: 8px 0;
+  border: white;
+  cursor: pointer;
+  width: 45%;
+}
+.btn-search:hover{
+  color: white;
+  background-color: darkgray;
+}
+/* .search-page{
+   background : url("./assets/images/background-2.jpg") no-repeat center center/cover;
+ 
+} */
+.search-details{
+  background: url("./assets/images/background-1.jpg") no-repeat center center/cover;
+  height: 80vh;
+  text-align: center;
+  color: black;
+  font-size: 30px;
+}
+.search-title{
+  color: black;
+}
+
+.detail-btn{
+  margin-top: 25px;
+  padding: 10px;
+  background-color: #e7e7e7;
+  color: black;
+  border: darkgray;
+  font-size: 15px;
+  cursor: pointer;
+  width: 20%;
+}
+.detail-btn:hover{
+  color: white;
+  background-color: darkgray;
+}
+.link-display{
+  text-decoration: none;
+  font-size: 25px;
+  color: black;
+}
