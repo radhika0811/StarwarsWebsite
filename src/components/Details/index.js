@@ -1,4 +1,5 @@
-import FilmDetails from "./FilmDetails";
-import VehicleDetails from "./VehicleDetails";
+import MovieDetails from "./MovieDetails";
 import PlanetDetails from "./PlanetDetails";
-export {FilmDetails,VehicleDetails,PlanetDetails};
+import VehicleDetails from "./VehicleDetails";
+
+export  {MovieDetails, PlanetDetails, VehicleDetails};

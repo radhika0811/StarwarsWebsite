@@ -1,82 +1,43 @@
-import { useParams } from "react-router";
-import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import React from "react";
+import useDataDetails from "../CustomHooks/useDataDetails";
+import { useHistory } from "react-router";
 
-const PlanetDetails = () => {
+const PlanetDetails = ({ match }) => {
+  console.log(match.params.id);
+  const [details, isLoaded] = useDataDetails("planets", match.params.id);
+  console.log("final call", details);
+  console.log(isLoaded);
   let history = useHistory();
-  const [planetDetails, setPlanetDetails] = useState(null);
-  const { planetId } = useParams();
-  const handleGoBack = () => {
+  console.log(history);
+  const handleBackButton = () => {
     history.goBack();
   };
-  useEffect(() => {
-    const fetchPlanetInfo = async () => {
-      const url = `https://swapi.dev/api/planets/${planetId}`;
-      const planetResponse = await fetch(url);
-      const planetInfo = await planetResponse.json();
-      console.log("planetInfo", planetInfo);
-      setPlanetDetails(planetInfo);
-    };
-    fetchPlanetInfo();
-  }, [planetId]);
   return (
-    <div className="search-details" >
+    <div className="search-details">
       <h1>Details</h1>
-
-      {planetDetails ? (
-        <div>
-          <p>
-            <span>
-              <b>Name: </b>
-            </span>
-            {planetDetails.name}
-          </p>
-          <p>
-            <span>
-              <b>Climate: </b>
-            </span>
-            {planetDetails.climate}
-          </p>
-          <p>
-            <span>
-              <b>Population:</b>{" "}
-            </span>
-            {planetDetails.population}
-          </p>
-          <p>
-            <span>
-              <b>Diameter:</b>{" "}
-            </span>
-            {planetDetails.diameter}
-          </p>
-          <p>
-            <span>
-              <b>Orbital Period:</b>{" "}
-            </span>
-            {planetDetails.orbital_period}
-          </p>
-          <p>
-            <span>
-              <b>Terrain:</b>{" "}
-            </span>
-            {planetDetails.terrain}
-          </p>
-          <p>
-            <span>
-              <b>Gravity:</b>{" "}
-            </span>
-            {planetDetails.gravity}
-          </p>
-          <p>
-            <span>
-              <b>Surface Water: </b>
-            </span>
-            {planetDetails.surface_water}
-          </p>
-        </div>
-      ) : <div></div>}
-      <button className="detail-btn" onClick={handleGoBack}>
-        Go Back
+      <h1 className="search-title">{details.name}</h1>
+      <p>
+        <span>
+          Rotation Period: {details.rotation_period}
+        </span>
+      </p>
+      <p>
+        <span>
+          Orbital Period: {details.orbital_period}
+        </span>
+      </p>
+      <p>
+        <span>
+          Diameter: {details.diameter}
+        </span>
+      </p>
+      <p>
+        <span>
+          Climate: {details.climate}
+        </span>
+      </p>
+      <button className="detail-btn" onClick={handleBackButton}>
+        Back
       </button>
     </div>
   );

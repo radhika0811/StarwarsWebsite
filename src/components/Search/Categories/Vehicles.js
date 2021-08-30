@@ -1,15 +1,14 @@
+import React from "react";
 import { Link } from "react-router-dom";
 
-const VehicleRows = ({ searchList }) => {
-  console.log("search list", searchList);
-  let vehicleRows = null;
-
+const Vehicles = ({ searchList }) => {
+  let vehicleRows = <h1></h1>;
   if (searchList) {
     vehicleRows = searchList.map((vehicle) => {
       const vehicleId = vehicle.url.split("/")[5];
       return (
         <h4 key={vehicle.url}>
-          <Link to={`/Vehicle/${vehicleId}`} className="link-display">
+          <Link to={`/vehicles/${vehicleId}`} className="links">
             {vehicle.name}
           </Link>
         </h4>
@@ -27,4 +26,4 @@ const VehicleRows = ({ searchList }) => {
   );
 };
 
-export default VehicleRows;
+export default Vehicles;

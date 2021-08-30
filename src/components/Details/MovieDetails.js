@@ -2,9 +2,9 @@ import React from "react";
 import useDataDetails from "../CustomHooks/useDataDetails";
 import { useHistory } from "react-router";
 
-const VehicleDetails = ({ match }) => {
+const MovieDetails = ({ match }) => {
   console.log(match.params.id);
-  const [details, isLoaded] = useDataDetails("vehicles", match.params.id);
+  const [details, isLoaded] = useDataDetails("films", match.params.id);
   console.log("final call", details);
   console.log(isLoaded);
   let history = useHistory();
@@ -15,18 +15,27 @@ const VehicleDetails = ({ match }) => {
   return (
     <div className="search-details">
       <h1>Details</h1>
-      <h2 className="search-title">{details.name}</h2>
+      <h2 className="search-title">{details.title}</h2>
       <p>
-        <span>Model: </span>
-        {details.model}
+        <span>Description: </span>
+        {details.opening_crawl}
       </p>
       <p>
-        <span>Manufacturer: </span>
-        {details.manufacturer}
+        <span>Director: </span>
+        {details.director}
       </p>
       <p>
-        <span>Cost: </span>
-        {details.cost_in_credits}
+        <span>Producer: </span>
+        {details.producer}
+      </p>
+      <p>
+        <span>Created: </span>
+        {details.created}
+      </p>
+
+      <p>
+        <span>Released: </span>
+        {details.release_date}
       </p>
       <button className="detail-btn" onClick={handleBackButton}>
         Back
@@ -35,4 +44,4 @@ const VehicleDetails = ({ match }) => {
   );
 };
 
-export default VehicleDetails;
+export default MovieDetails;

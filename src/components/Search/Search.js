@@ -1,40 +1,42 @@
-import React, { Suspense } from "react";
-const PlanetRows = React.lazy(() => import("./Internals/PlanetRows"));
-const VehicleRows = React.lazy(() => import("./Internals/VehicleRows"));
-const FilmRows = React.lazy(() => import("./Internals/FilmRows"));
+import React, {Suspense} from "react";
+const Planets = React.lazy(() => import("./Categories/Planets"));
+const Movies = React.lazy(() => import("./Categories/Movies"));
+const Vehicles = React.lazy(() => import("./Categories/Vehicles"));
 
 const Search = ({
-  handleInput,
+  handleSearch,
   searchList,
-  input,
-  cName,
-  lastElementRef,
+  category,
   loading,
   hasMore,
+  lastElementRef,
 }) => {
+  console.log("SearchList is->", searchList);
+  console.log("category is->", category);
+  console.log("loading->", loading);
+  console.log("hasMore", hasMore);
+  console.log("lastElementRef", lastElementRef);
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <div id="searchContainer">
-        <h1>Search</h1>
+        <h1>Search Page</h1>
         <input
-          value={input}
-          onChange={handleInput}
-          id="searchInput"
-          placeholder="Search..."
+          type="text"
+          onChange={handleSearch}
+          placeholder="Enter your search details here"
         ></input>
-        {searchList && cName === "planets" ? (
-          <PlanetRows searchList={searchList} />
+        {searchList && category === "planets" ? (
+          <Planets searchList={searchList} />
         ) : null}
-        {searchList && cName === "films" ? (
-          <FilmRows searchList={searchList} />
+        {searchList && category === "films" ? (
+          <Movies searchList={searchList} />
         ) : null}
-        {searchList && cName === "vehicles" ? (
-          <VehicleRows searchList={searchList} />
+        {searchList && category === "vehicles" ? (
+          <Vehicles searchList={searchList} />
         ) : null}
         {!loading && hasMore && <div>Loading...</div>}
+        <div ref={lastElementRef}></div>
       </div>
-
-      <div ref={lastElementRef}></div>
     </Suspense>
   );
 };

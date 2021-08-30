@@ -1,12 +1,14 @@
+import React from "react";
 import { Link } from "react-router-dom";
-const PlanetRows = ({ searchList }) => {
+
+const Planets = ({ searchList }) => {
   let planetRows = <h1></h1>;
   if (searchList) {
     planetRows = searchList.map((planet) => {
       const planetId = planet.url.split("/")[5];
       return (
         <h4 key={planet.url}>
-          <Link to={`/planets/${planetId}`} className="link-display">
+          <Link to={`/planets/${planetId}`} className="links">
             {planet.name}
           </Link>
         </h4>
@@ -16,12 +18,12 @@ const PlanetRows = ({ searchList }) => {
   return (
     <>
       {searchList.length !== 0 ? (
-       <div >{planetRows}</div>
+        <div className="searchResults">{planetRows}</div>
       ) : (
-        <div>No result matches your search query</div>
+        <div>No matches Found</div>
       )}
     </>
   );
 };
 
-export default PlanetRows;
+export default Planets;

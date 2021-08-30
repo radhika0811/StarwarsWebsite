@@ -1,42 +1,50 @@
-import React, { Suspense } from "react";
-import Planet from "./Internals/Planet";
-import Films from "./Internals/Films";
-import Vehicle from "./Internals/Vehicle";
-const Home = ({handleCategorySearch}) => {
-  
+import React from "react";
+import Planets from "./Categories/Planets";
+import { useHistory } from "react-router-dom";
+import Vehicles from "./Categories/Vehicles";
+import Movies from "./Categories/Movies";
+
+const Home = () => {
+  const history = useHistory();
+  function handleButtonClick(category) {
+    history.push(`/search/${category}`);
+  }
   return (
     <div className="home-page">
       <h1 className="home">Home</h1>
       <div className="main-box">
         <div className="box">
           <h1>Planet</h1>
-          <Planet />
+          <Planets />
           <button
             className="btn-more"
-            onClick={() => handleCategorySearch("planets")}
+            onClick={() => handleButtonClick("planets")}
           >
             View All
           </button>
+          ;
         </div>
         <div className="box">
           <h1>Films</h1>
-          <Films />
+          <Movies />
           <button
             className="btn-more"
-            onClick={() => handleCategorySearch("films")}
+            onClick={() => handleButtonClick("films")}
           >
             View All
           </button>
+          ;
         </div>
         <div className="box">
           <h1>Vehicle</h1>
-          <Vehicle />
+          <Vehicles />
           <button
             className="btn-more"
-            onClick={() => handleCategorySearch("vehicles")}
+            onClick={() => handleButtonClick("vehicles")}
           >
             View All
           </button>
+          ;
         </div>
       </div>
     </div>

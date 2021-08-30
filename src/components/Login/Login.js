@@ -1,6 +1,12 @@
-import user from "../../assets/images/userImage.png";
+import user from "../../assets/images/user13.png";
 
-const Login = ({ state, checkPasswordName, checkUserName, handleSignIn,errorMessage }) => {
+const Login = ({
+  state,
+  checkPasswordName,
+  checkUserName,
+  handleSignIn,
+  errorMessage,
+}) => {
   return (
     <div className="login">
       <h1 id="login">Login</h1>

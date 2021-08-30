@@ -1,5 +1,6 @@
 import Search from "./Search";
-import FilmRows from "./Internals/FilmRows";
-import VehicleRows from "./Internals/VehicleRows";
-import PlanetRows from "./Internals/PlanetRows";
-export  {Search,FilmRows,VehicleRows,PlanetRows};
+import Movies from "./Categories/Movies"
+import Vehicles from "./Categories/Vehicles";
+import Planets from "./Categories/Planets";
+
+export  {Search, Movies, Vehicles, Planets};

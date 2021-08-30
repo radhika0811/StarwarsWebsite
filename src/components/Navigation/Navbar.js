@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-const Navbar = ({ handleSignOut, auth }) => {
+const Navbar = ({ handleSignOut, user }) => {
   return (
     <nav>
       <div className="nav-1">
-        {auth.user ? (
+        {user ? (
           <>
-            <span className="user">{auth.user}</span>
+            <span className="user">{user}</span>
           </>
         ) : (
           <Link className="link-2" to="/">You're Not Logged In</Link>

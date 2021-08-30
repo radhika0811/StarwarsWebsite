@@ -1,17 +1,18 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useParams } from "react-router-dom";
-import { Search } from "./index";
-import dataSearch from "../../utils/dataSearch";
+import Search from "./Search";
+import searchData from "../../utils/searchData";
 
 const SearchContainer = () => {
-  const [searchList, setSearchList] = useState([]);
-  const { cName } = useParams();
-  const [loading, setLoading] = useState(true);
   const [input, setInput] = useState("");
+  const { category } = useParams();
+  console.log("category is->", category);
+  const [loading, setLoading] = useState(true);
+  const [searchList, setSearchList] = useState([]);
   const [hasMore, setHasMore] = useState(true);
   const [pageNumber, setPageNumber] = useState(1);
   useEffect(() => {
-    dataSearch(cName, input, pageNumber, (data) => {
+    searchData(category, input, pageNumber, (data) => {
       setLoading(false);
       if (data.next) {
         setHasMore(true);
@@ -19,7 +20,7 @@ const SearchContainer = () => {
         setHasMore(false);
       }
       if (data && data.results) {
-        console.log("here");
+        console.log(" working here in useEffect");
         setSearchList((prevList) => {
           return [...new Set([...prevList, ...data.results])];
         });
@@ -28,9 +29,9 @@ const SearchContainer = () => {
   }, [input, pageNumber]);
   useEffect(() => {
     setSearchList([]);
+    console.log("working here");
   }, [input]);
-  console.log("search list", searchList);
-
+  console.log("list->", searchList);
   const observer = useRef();
   const lastElementRef = useCallback(
     (node) => {
@@ -46,21 +47,21 @@ const SearchContainer = () => {
     },
     [loading, hasMore]
   );
-  const handleInput = (e) => {
-    setInput(e.target.value);
-    setPageNumber(1);
+  const handleSearch = (event) => {
+    console.log(event.target.value);
+    setInput(event.target.value);
     setLoading(true);
+    setPageNumber(1);
   };
 
   return (
     <Search
-      handleInput={handleInput}
+      handleSearch={handleSearch}
       searchList={searchList}
-      input={input}
-      cName={cName}
-      lastElementRef={lastElementRef}
       loading={loading}
       hasMore={hasMore}
+      category={category}
+      lastElementRef={lastElementRef}
     />
   );
 };

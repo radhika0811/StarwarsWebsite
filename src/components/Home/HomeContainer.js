@@ -1,13 +1,13 @@
-import {Home} from "./index"
-import { useHistory } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
+import Home from "./Home";
 
 const HomeContainer = () => {
-  const history = useHistory();
-  const handleCategorySearch = (categoryName) => {
-    console.log("history", history);
-    history.push(`/search/${categoryName}`);
-  };
-  return <Home handleCategorySearch={handleCategorySearch} />;
+  function handleButtonClick(category) {
+    alert("working");
+    <Link to={`/search/${category}`}></Link>;
+  }
+  return <Home handleButtonClick={handleButtonClick} />;
 };
 
 export default HomeContainer;
