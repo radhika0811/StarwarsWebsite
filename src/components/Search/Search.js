@@ -1,41 +1,40 @@
-import React from "react";
-import { Suspense } from "react";
-
+import React, { Suspense } from "react";
 const PlanetRows = React.lazy(() => import("./Internals/PlanetRows"));
 const VehicleRows = React.lazy(() => import("./Internals/VehicleRows"));
 const FilmRows = React.lazy(() => import("./Internals/FilmRows"));
+
 const Search = ({
   handleInput,
-  handleCategorySearch,
   searchList,
   input,
   cName,
+  lastElementRef,
+  loading,
+  hasMore,
 }) => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <div className="search-page">
-        <h1 className="search">Search</h1>
+      <div id="searchContainer">
+        <h1>Search</h1>
         <input
           value={input}
           onChange={handleInput}
-          className="search-box"
-          placeholder="Enter your search query here"
+          id="searchInput"
+          placeholder="Search..."
         ></input>
-        <button className="btn-search" onClick={handleCategorySearch}>
-          Submit
-        </button>
-        <div className="search-results">
-          {searchList && cName === "films" ? (
-            <FilmRows searchList={searchList} />
-          ) : null}
-          {searchList && cName === "planets" ? (
-            <PlanetRows searchList={searchList} />
-          ) : null}
-          {searchList && cName === "vehicles" ? (
-            <VehicleRows searchList={searchList} />
-          ) : null}
-        </div>
+        {searchList && cName === "planets" ? (
+          <PlanetRows searchList={searchList} />
+        ) : null}
+        {searchList && cName === "films" ? (
+          <FilmRows searchList={searchList} />
+        ) : null}
+        {searchList && cName === "vehicles" ? (
+          <VehicleRows searchList={searchList} />
+        ) : null}
+        {!loading && hasMore && <div>Loading...</div>}
       </div>
+
+      <div ref={lastElementRef}></div>
     </Suspense>
   );
 };
