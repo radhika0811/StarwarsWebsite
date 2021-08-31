@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 const NavbarContainer = () => {
   let history = useHistory();
   const isLoggedIn=sessionStorage.getItem("user");
+  console.log("user->",isLoggedIn);
   const handleSignOut = () => {
     sessionStorage.removeItem("user");
     history.push("/");

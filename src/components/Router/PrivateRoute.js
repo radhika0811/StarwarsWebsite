@@ -1,8 +1,11 @@
 import { Route, Redirect } from "react-router";
+import NavbarContainer from "../Navigation/NavbarContainer";
 
 function PrivateRoute({ children, ...rest }) {
   const isLoggedIn = sessionStorage.getItem("user");
   return (
+    <>
+    {/* <NavbarContainer /> */}
     <Route
       {...rest}
       render={({ location }) => {
@@ -19,6 +22,7 @@ function PrivateRoute({ children, ...rest }) {
         );
       }}
     />
+    </>
   );
 }
 
